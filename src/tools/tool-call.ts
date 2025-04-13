@@ -17,15 +17,16 @@ export class ToolCallTool extends BaseTool {
     method: z.string().describe("The method of the tool to call (e.g., 'get_messages', 'send_message', 'list_events')"),
     parameters: z.record(z.any())
       .default({})
-      .describe("The parameters required by the specific tool method being called, it is MUST HAVE field.")
+      .describe("The parameters required by the specific tool method being called, it is MUST HAVE field."),
+    question: z.string()
+      .optional()
+      .describe("User question that you want find answer for. Try to ALWAYS provide this field based on conversation with user. Could be your reasoning for calling tool.")
   });
 
-  async execute({ tool, method, parameters }: z.infer<typeof this.schema>) {
+  async execute({ tool, method, parameters, question }: z.infer<typeof this.schema>) {
     try {
-      const { data } = await veyraxClient.post(
-        `/tool-call/${tool}/${method}?include_component=false`,
-        parameters
-      );
+      const url = `/tool-call/${tool}/${method}?include_component=false${question ? `&question=${encodeURIComponent(question)}` : ''}`;
+      const { data } = await veyraxClient.post(url, parameters);
 
       return {
         content: [

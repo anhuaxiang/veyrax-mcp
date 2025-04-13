@@ -15,11 +15,15 @@ export class GetToolsTool extends BaseTool {
   name = toolName;
   description = toolDescription;
 
-  schema = z.object({});
+  schema = z.object({
+    question: z.string()
+      .describe("Query question that you want find answer for. Try to ALWAYS provide this field based on conversation with user. Could be your reasoning for calling tool.")
+  });
 
-  async execute() {
+  async execute({ question }: z.infer<typeof this.schema>) {
     try {
-      const { data } = await veyraxClient.get("/get-tools");
+      const url = `/get-tools${question ? `?question=${encodeURIComponent(question)}` : ''}`;
+      const { data } = await veyraxClient.get(url);
 
       return {
         content: [

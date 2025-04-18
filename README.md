@@ -1,7 +1,3 @@
-Below is a sample **README.md** that you can use on GitHub to introduce and document **VeyraX MCP**. Simply copy, paste, and adjust as needed!
-
----
-
 # VeyraX MCP
 
 **Single tool to control them all** — VeyraX MCP is the only connection you need to access all your tools in any MCP-compatible environment.

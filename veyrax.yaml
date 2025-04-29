@@ -1,0 +1,9 @@
+name: VeyraX
+description: Single MCP tool to connect 100+ tools: Gmail, Calendar and more.
+node_version: 22.14.0-alpine
+project_directory: /veyrax
+install_command: npm install
+build_command: npm run build
+start_command: node dist/index.js
+env:
+  VEYRAX_API_KEY: config.VEYRAX_API_KEY

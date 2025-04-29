@@ -1,6 +1,6 @@
 name: VeyraX
-description: Single MCP tool to connect 100+ tools: Gmail, Calendar and more.
-base_image: 22.14.0-alpine
+description: "Single MCP tool to connect 100+ tools: Gmail, Calendar and more."
+base_image: node:22.14.0-alpine
 project_directory: /app
 install_command: npm install
 build_command: npm run build

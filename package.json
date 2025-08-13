@@ -8,7 +8,7 @@
     },
     "bin": {
         "veyrax-mcp": "dist/index.js"
-    }
+    },
     "author": "korzhov.work2019@gmail.com",
     "license": "ISC",
     "description": "Veyrax MCP",
